@@ -1,8 +1,8 @@
 <?php
-// TMC Private Detective Agency - simple PHP mail handler.
+// Triguna Private Detective - simple PHP mail handler.
 // Requires a PHP-enabled hosting environment. Change $to if the receiving email changes.
 $to = "infor@triguna.org";
-$subject = "New Confidential Enquiry - TMC Private Detective Agency";
+$subject = "New Confidential Enquiry - Triguna Private Detective";
 
 function clean($value) {
     return trim(str_replace(["\r", "\n"], " ", $value ?? ""));
@@ -26,9 +26,9 @@ $body = "New confidential enquiry\n\n"
       . "Email: $email\n"
       . "Service: $service\n\n"
       . "Message:\n$message\n\n"
-      . "Submitted through TMC Private Detective Agency website.";
+      . "Submitted through Triguna Private Detective website.";
 
-$headers = "From: TMC Website <no-reply@triguna.org>\r\n";
+$headers = "From: Triguna Private Detective Website <no-reply@triguna.org>\r\n";
 if ($email !== "" && filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $headers .= "Reply-To: $email\r\n";
 }
