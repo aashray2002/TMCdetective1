@@ -73,12 +73,12 @@ body:before{background:radial-gradient(circle at 78% 10%,rgba(31,111,235,.09),tr
 .local-note h3{margin:0 0 9px;font:700 20px Manrope;color:#172033}.local-note p{max-width:900px;margin:0;color:#657386;font-size:13px;line-height:1.8}
 
 /* Generated editorial photography, framed to retain a clean and readable layout. */
-.hero-photo{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);object-fit:cover;object-position:center;border-radius:30px;opacity:.92;filter:saturate(.88) contrast(1.03);box-shadow:0 28px 70px rgba(21,55,92,.20)}
+.hero-photo{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);object-fit:cover;object-position:center;border:7px solid #fff;border-radius:30px;opacity:.92;filter:saturate(.88) contrast(1.03);box-shadow:0 28px 70px rgba(21,55,92,.20)}
 .scene:after{content:"";position:absolute;inset:18px;border-radius:30px;background:linear-gradient(135deg,rgba(15,41,73,.08),transparent 48%,rgba(232,117,34,.13));pointer-events:none}
 .scene .ring,.scene .main-card,.scene .float-tag{z-index:1}.scene .main-card{background:rgba(255,255,255,.89);box-shadow:0 25px 55px rgba(13,38,68,.24),inset 0 1px rgba(255,255,255,.9)}
 .about-photo-frame{width:min(100%,390px);height:390px;position:relative;overflow:hidden;border-radius:24px;border:8px solid #fff;box-shadow:0 25px 55px rgba(22,52,86,.16)}
 .about-photo-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(25,87,154,.10),transparent 50%,rgba(232,117,34,.14));pointer-events:none}.about-photo-frame img{width:100%;height:100%;object-fit:cover;display:block}.photo-caption{position:absolute;z-index:1;left:16px;right:16px;bottom:16px;padding:12px 14px;border-radius:10px;background:rgba(12,36,64,.88);color:#fff;font:700 10px Manrope;letter-spacing:.13em;backdrop-filter:blur(10px)}.photo-caption span{color:#f59a43;margin-right:8px}
-@media(max-width:650px){.hero-photo{inset:10px;width:calc(100% - 20px);height:calc(100% - 20px)}.scene:after{inset:10px}.about-photo-frame{height:310px}}
+@media(max-width:650px){.hero-photo{inset:10px;width:calc(100% - 20px);height:calc(100% - 20px);border-width:5px}.scene:after{inset:10px}.about-photo-frame{height:310px}}
 
 /* The hero image is now the sole focal point, without the old dashboard overlay. */
 .scene .ring,.scene .main-card,.scene .float-tag{display:none}
