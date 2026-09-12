@@ -11,6 +11,53 @@ const observer = new IntersectionObserver(entries => {
 }, {threshold:.12});
 $$('.reveal').forEach(el => observer.observe(el));
 
+const faqSlider = $('#faqSlider');
+const moveFaqSlider = (direction = 1) => {
+  if (!faqSlider) return;
+  const card = faqSlider.querySelector('.faq-item');
+  const distance = card ? card.getBoundingClientRect().width + 20 : 320;
+  const atEnd = faqSlider.scrollLeft + faqSlider.clientWidth >= faqSlider.scrollWidth - 8;
+  const atStart = faqSlider.scrollLeft <= 8;
+  if ((direction > 0 && atEnd) || (direction < 0 && atStart)) {
+    faqSlider.scrollTo({ left: direction > 0 ? 0 : faqSlider.scrollWidth, behavior: 'smooth' });
+    return;
+  }
+  faqSlider.scrollBy({ left: direction * distance, behavior: 'smooth' });
+};
+
+$$('[data-faq-slide]').forEach(button => button.addEventListener('click', () => {
+  moveFaqSlider(button.dataset.faqSlide === 'next' ? 1 : -1);
+}));
+
+if (faqSlider && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const cards = [...faqSlider.querySelectorAll('.faq-item')];
+  const clonedCards = cards.map(card => {
+    const copy = card.cloneNode(true);
+    copy.classList.remove('reveal');
+    copy.classList.add('visible');
+    copy.setAttribute('aria-hidden', 'true');
+    faqSlider.appendChild(copy);
+    return copy;
+  });
+
+  let isFaqSliderHovered = false;
+  let previousFrame;
+  const scrollContinuously = timestamp => {
+    if (previousFrame && !isFaqSliderHovered) {
+      const elapsed = Math.min(timestamp - previousFrame, 50);
+      faqSlider.scrollLeft += elapsed * 1;
+      const loopWidth = clonedCards[0].offsetLeft - cards[0].offsetLeft;
+      if (faqSlider.scrollLeft >= loopWidth) faqSlider.scrollLeft -= loopWidth;
+    }
+    previousFrame = timestamp;
+    window.requestAnimationFrame(scrollContinuously);
+  };
+
+  faqSlider.addEventListener('mouseenter', () => { isFaqSliderHovered = true; });
+  faqSlider.addEventListener('mouseleave', () => { isFaqSliderHovered = false; });
+  window.requestAnimationFrame(scrollContinuously);
+}
+
 const glow = $('.cursor-glow');
 window.addEventListener('pointermove', e => {
   document.documentElement.style.setProperty('--mx', e.clientX + 'px');
@@ -110,10 +157,10 @@ function botReply(text){
   if (t.includes('consult') || t.includes('investigation') || t.includes('help')) {
     return 'Absolutely. Start with a brief description of the situation—without highly sensitive details. We can then discuss the lawful scope and next steps privately.';
   }
-  if (t.includes('address') || t.includes('location') || t.includes('mohali')) {
-    return 'Our listed office address is E-99, Phase-7, Industrial Area, Mohali, Punjab. The Contact section includes an interactive Google Map.';
+  if (t.includes('location') || t.includes('mohali')) {
+    return 'We handle enquiries remotely through phone, WhatsApp, email, or the confidential contact form.';
   }
-  return 'I can help with services, consultation, contact details, pricing questions, or the Mohali office location. What would you like to know?';
+  return 'I can help with services, consultation, contact details, or pricing questions. What would you like to know?';
 }
 
 function addMessage(text, who='bot'){
