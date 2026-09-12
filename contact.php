@@ -1,7 +1,7 @@
 <?php
 // TMC Private Detective Agency - simple PHP mail handler.
 // Requires a PHP-enabled hosting environment. Change $to if the receiving email changes.
-$to = "aashraydhiman@gmail.com";
+$to = "info@triguna.org";
 $subject = "New Confidential Enquiry - TMC Private Detective Agency";
 
 function clean($value) {
