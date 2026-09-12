@@ -105,7 +105,7 @@ function botReply(text){
     return 'Pricing depends on the service and case scope. Please request a confidential consultation and we can discuss the appropriate scope before proceeding.';
   }
   if (t.includes('contact') || t.includes('phone') || t.includes('whatsapp')) {
-    return 'You can call +91 63862 99618, WhatsApp us, or email info@triguna.org. For a private enquiry, the Contact section also has a form.';
+    return 'You can call +91 90414 12801, WhatsApp us, or email infor@triguna.org. For a private enquiry, the Contact section also has a form.';
   }
   if (t.includes('consult') || t.includes('investigation') || t.includes('help')) {
     return 'Absolutely. Start with a brief description of the situation—without highly sensitive details. We can then discuss the lawful scope and next steps privately.';

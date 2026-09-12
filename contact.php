@@ -1,7 +1,7 @@
 <?php
 // TMC Private Detective Agency - simple PHP mail handler.
 // Requires a PHP-enabled hosting environment. Change $to if the receiving email changes.
-$to = "info@triguna.org";
+$to = "infor@triguna.org";
 $subject = "New Confidential Enquiry - TMC Private Detective Agency";
 
 function clean($value) {
@@ -42,5 +42,5 @@ if ($sent) {
 }
 
 http_response_code(500);
-echo "We could not send the enquiry from this server. Please contact us by WhatsApp or email at info@triguna.org.";
+echo "We could not send the enquiry from this server. Please contact us by WhatsApp or email at infor@triguna.org.";
 ?>
