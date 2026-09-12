@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.triguna.org/sitemap.xml
